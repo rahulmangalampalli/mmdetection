@@ -1,5 +1,5 @@
 _base_ = '../mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py'
-norm_cfg = dict(type='BN', requires_grad=False)
+norm_cfg = dict(type='BN', requires_grad=True)
 model = dict(
     pretrained='open-mmlab://resnest50',
     backbone=dict(
