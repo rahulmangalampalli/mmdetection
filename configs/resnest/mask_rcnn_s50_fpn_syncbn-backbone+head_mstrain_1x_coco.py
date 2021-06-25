@@ -1,5 +1,5 @@
 _base_ = '../mask_rcnn/mask_rcnn_r50_fpn_1x_coco.py'
-norm_cfg = dict(type='SyncBN', requires_grad=True)
+norm_cfg = dict(type='BN', requires_grad=False)
 model = dict(
     pretrained='open-mmlab://resnest50',
     backbone=dict(
@@ -13,7 +13,7 @@ model = dict(
         out_indices=(0, 1, 2, 3),
         frozen_stages=1,
         norm_cfg=norm_cfg,
-        norm_eval=False,
+        norm_eval=True,
         style='pytorch'),
     roi_head=dict(
         bbox_head=dict(
