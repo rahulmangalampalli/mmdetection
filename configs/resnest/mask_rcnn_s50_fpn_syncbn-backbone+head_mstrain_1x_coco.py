@@ -26,7 +26,7 @@ img_norm_cfg = dict(
     mean=[123.68, 116.779, 103.939], std=[58.393, 57.12, 57.375], to_rgb=True)
 crop_size = (417, 417)
 train_pipeline = [
-    dict(type='LoadImageFromFile'),
+    dict(type='LoadImageFromFile',to_float32=True),
     dict(
         type='LoadAnnotations',
         with_bbox=True,
@@ -38,7 +38,7 @@ train_pipeline = [
                    (1333, 768), (1333, 800)],
         multiscale_mode='value',
         keep_ratio=True),
-    dict(type='RandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
+    dict(type='RandomCrop', crop_size=crop_size),
     dict(type='RandomFlip', flip_ratio=0.5),
     dict(type='PhotoMetricDistortion'),
     dict(type='Normalize', **img_norm_cfg),
